@@ -1,17 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
 import type { Todo } from './types'
 
+// Дефолтные задачи (покажутся только если хранилище пустое)
+const defaultTodos: Todo[] = [
+  { id: '1', text: 'Настроить Vite + TS', completed: true },
+  { id: '2', text: 'Понять useState', completed: false },
+  { id: '3', text: 'Добавить форму создания', completed: false },
+]
+
 function App() {
   // Инициализируем state массивом с начальными данными
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: '1', text: 'Настроить Vite + TS', completed: true },
-    { id: '2', text: 'Понять useState', completed: false },
-    { id: '3', text: 'Добавить форму создания', completed: false },
-  ])
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    try {
+      const saved = localStorage.getItem('todos')
+      return saved ? JSON.parse(saved) : defaultTodos
+    } catch {
+      return defaultTodos
+    }
+  })
 
   const [inputValue, setInputValue] = useState('')
+
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
 
   // Добавление новой задачи
   const handleSubmit = (e: React.FormEvent) => {
