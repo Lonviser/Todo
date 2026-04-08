@@ -1,15 +1,10 @@
 import { useState } from 'react'
 import Header from './components/Header'
-
-// 1. Интерфейс задачи. Имена полей: id, text, completed
-interface Todo {
-  id: string;
-  text: string;
-  completed: boolean;
-}
+import TodoList from './components/TodoList'
+import type { Todo } from './types'
 
 function App() {
-  // 2. Инициализируем state массивом с начальными данными
+  // Инициализируем state массивом с начальными данными
   const [todos, setTodos] = useState<Todo[]>([
     { id: '1', text: 'Настроить Vite + TS', completed: true },
     { id: '2', text: 'Понять useState', completed: false },
@@ -18,6 +13,7 @@ function App() {
 
   const [inputValue, setInputValue] = useState('')
 
+  // Добавление новой задачи
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -29,10 +25,11 @@ function App() {
       text,
       completed: false
     }
-
     setTodos(prev => [...prev, newTodo])
     setInputValue('');
   }
+
+  // Переключение статуса задачи
 
   const toggleTodo = (id: string) => {
     setTodos(prev => 
@@ -43,6 +40,7 @@ function App() {
       )
     )
   }
+  // удаление задачи
 
   const deleteTodo = (id:string)=>{
     setTodos(prev => prev.filter(todo => todo.id !== id))
@@ -52,22 +50,7 @@ function App() {
     <>
       <Header title="Мои задачи" subTitle="План на сегодня" />
       
-      <ul>
-        {/* 3. map создаёт новый массив React-элементов */}
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <input 
-              type="checkbox"
-              checked={todo.completed}
-              onChange={()=> toggleTodo(todo.id)}
-              />
-              <span style={{textDecoration: todo.completed  ? 'line-through' : 'none'}}>
-                {todo.text}
-              </span>
-              <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
-          </li>
-        ))}
-      </ul>
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
 
         <form onSubmit={handleSubmit}>
           <input 
