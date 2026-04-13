@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
 
 :root {
   --color-primary: #6366f1;
@@ -13,8 +13,18 @@
   --radius: 20px;
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.15);
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+  --color-primary: #818cf8;
+  --color-primary-hover: #6366f1;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-border: #334155;
+  --color-surface: #1e2937;
+  --color-bg: #0f172a;
 }
 
 * {
@@ -25,9 +35,14 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #f1f5f9 0%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
   min-height: 100vh;
   padding: 2rem 1rem;
+  transition: var(--transition);
+}
+
+.dark body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
 }
 
 #root {

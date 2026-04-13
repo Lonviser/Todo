@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem'
 import type { Todo } from '../types'
-
+import './TodoList.css'
 interface TodoListProps {
   todos: Todo[];
   onToggle: (id: string) => void;
@@ -9,7 +9,7 @@ interface TodoListProps {
 
 function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
   return (
-    <ul>
+    <ul className="todo-list">
       {todos.map(todo => (
         <TodoItem 
           key={todo.id}

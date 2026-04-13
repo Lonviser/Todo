@@ -1,0 +1,60 @@
+/* ===== TodoItem ===== */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background: var(--color-bg);
+  transition: var(--transition);
+}
+
+.todo-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.todo-item input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--color-success);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-item span {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--color-text);
+  word-break: break-word;
+  transition: var(--transition);
+}
+
+.todo-item input:checked + span {
+  color: var(--color-text-secondary);
+}
+
+.todo-item button {
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.todo-item button:hover {
+  color: var(--color-danger);
+  background: rgba(245, 101, 101, 0.1);
+  transform: scale(1.1);
+}
+
+/* Убираем стандартный маркер списка, если он остался */
+.todo-list {
+  list-style: none;
+}

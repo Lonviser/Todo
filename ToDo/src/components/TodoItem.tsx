@@ -1,4 +1,5 @@
 import type { Todo } from '../types'  
+import './TodoItem.css'  
 
 interface TodoItemProps {
   todo: Todo; 
@@ -8,7 +9,7 @@ interface TodoItemProps {
 
 function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   return (
-    <li>
+    <li className="todo-item">
       <input 
         type="checkbox"
         checked={todo.completed} 

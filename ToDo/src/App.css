@@ -1,0 +1,147 @@
+.app {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem 2rem;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  -webkit-text-fill-color: transparent;
+}
+
+.header h2 {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+.task-counter {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filters button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.filters button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+}
+
+.add-form {
+  margin-top: 2.5rem;
+}
+
+.input-group {
+  display: flex;
+  background: var(--color-bg);
+  border-radius: 9999px;
+  padding: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.input-group:focus-within {
+  box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.15);
+}
+
+.todo-input {
+  flex: 1;
+  padding: 1.1rem 1.6rem;
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  outline: none;
+}
+
+.todo-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary), #a78bfa);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.submit-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 520px) {
+  .app { padding: 1.75rem 1.25rem; }
+  .input-group { flex-direction: column; padding: 6px; gap: 10px; }
+  .submit-btn { width: 100%; justify-content: center; }
+}
