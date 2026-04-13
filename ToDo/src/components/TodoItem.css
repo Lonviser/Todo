@@ -54,7 +54,23 @@
   transform: scale(1.1);
 }
 
-/* Убираем стандартный маркер списка, если он остался */
 .todo-list {
   list-style: none;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+  font-weight: 500;
+}
+
+.edit-input:focus {
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+  border-color: var(--color-primary);
 }

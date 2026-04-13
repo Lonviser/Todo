@@ -53,6 +53,16 @@ function App() {
     )
   }
 
+  const editTodo = (id: string, newText: string) => {
+  setTodos(prev =>
+    prev.map(todo =>
+      todo.id === id 
+        ? { ...todo, text: newText } 
+        : todo
+    )
+  );
+};
+
   const deleteTodo = (id: string) => {
     setTodos(prev => prev.filter(todo => todo.id !== id))
   }
@@ -93,7 +103,7 @@ function App() {
           </p>
         </div>
       ) : (
-        <TodoList todos={filteredTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
+        <TodoList todos={filteredTodos} onToggle={toggleTodo} onDelete={deleteTodo} onEdit={editTodo} />
       )}
 
       <form className="add-form" onSubmit={handleSubmit}>
